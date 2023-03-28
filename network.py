@@ -32,10 +32,10 @@ class User(Node):
     """
     name = str
 
-    def __int__(self, address: NodeAddress) -> None:
+    def __int__(self, name: str) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
-        self.address = address
-        self.channels = {}
+        super().__init__()
+        self.name = name
 
 
 class Product(Node):
@@ -43,8 +43,15 @@ class Product(Node):
 
         Instance Attributes:
         - name:
-            the name of the user to that is displayed when showing reccomendations
+            the name of the product to that is displayed when showing reccomendations
     """
+    name = str
+    brand = str
+    price = int
+    def __int__(self, name: str) -> None:
+        """Initialize this node with the given address and no current connections to other nodes."""
+        super().__init__()
+        self.name = name
 
 
 class Review:
