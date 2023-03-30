@@ -2,6 +2,7 @@
 
 NodeAddress = int | str
 
+# :3
 
 class Node:
     """A node that represents a user or product in a network.
