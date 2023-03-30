@@ -17,10 +17,10 @@ class Node:
     address = NodeAddress
     reviews = dict[NodeAddress, Review]
 
-    def __int__(self, address: NodeAddress) -> None:
+    def __init__(self, address: NodeAddress) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
         self.address = address
-        self.channels = {}
+        self.reviews = {}
 
 
 class User(Node):
@@ -32,44 +32,49 @@ class User(Node):
     """
     name = str
 
-    def __int__(self, name: str) -> None:
+    def __init__(self, address: NodeAddress, name: str) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
-        super().__init__()
+        super().__init__(address)
         self.name = name
 
 
 class Product(Node):
     """A user node that represents individual users in a network
 
-        Instance Attributes:
-        - name:
-            the name of the product to that is displayed when showing reccomendations
+    Instance Attributes:
+    - name:
+        the name of the product to that is displayed when showing reccomendations
     """
     name = str
     brand = str
-    price = int
-    def __int__(self, name: str) -> None:
+    price = float
+
+    def __init__(self, address: NodeAddress, name: str, brand: str, price: float) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
-        super().__init__()
+        super().__init__(address)
         self.name = name
+        self.brand = brand
+        self.price = price
 
 
 class Review:
     """A user node that represents individual users in a network
 
-        Instance Attributes:
-        - endpoints:
-           the nodes that are connected together by the review
-        - ratings:
-            a mapping of reviews types. The keys correspond to the skin type and the rating corresponds to the review
-            given for that product and skin type.
+    Instance Attributes:
+    - endpoints:
+       the nodes that are connected together by the review
+    - ratings:
+        a mapping of reviews types. The keys correspond to the skin type and the rating corresponds to the review
+        given for that product and skin type.
+
     """
     endpoints = set[Node]
     ratings = dict[str, float]
 
     def __init__(self, n1: Node, n2: Node, rating: tuple[str, float]) -> None:
         self.endpoints = {n1, n2}
-        self.ratings[rating[0]] = rating[1]
+        ratings = self.ratings
+        ratings[rating[0]] = rating[1]
 
 
 class Network:
@@ -99,3 +104,7 @@ class Network:
             self.add_node(n2)
 
         Review(self._nodes[n1], self._nodes[n2], rating)
+
+    def get_nodes(self) -> dict[NodeAddress, Node]:
+        """Returns the current nodes in the network"""
+        return self._nodes
