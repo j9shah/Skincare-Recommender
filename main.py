@@ -8,6 +8,8 @@ def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
 
+    # whats good ladies (and jainam) r we ready to build the best skincare reccomender ever
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
