@@ -109,3 +109,5 @@ class Network:
     def get_nodes(self) -> dict[NodeAddress, Node]:
         """Returns the current nodes in the network"""
         return self._nodes
+
+    #hi
