@@ -2,7 +2,6 @@
 
 NodeAddress = int | str
 
-# :3
 
 class Node:
     """A node that represents a user or product in a network.
@@ -15,8 +14,8 @@ class Node:
         A mapping containing the reviews which are like the edges of the graph and represent the connection between a
         user and a product. Each key represents the other nodes that are connected to the current node.
     """
-    address = NodeAddress
-    reviews = dict[NodeAddress, Review]
+    address: NodeAddress
+    reviews: dict[NodeAddress, Review]
 
     def __init__(self, address: NodeAddress) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
@@ -31,7 +30,7 @@ class User(Node):
     - name:
         the name of the user to that is displayed when showing reccomendations
     """
-    name = str
+    name: str
 
     def __init__(self, address: NodeAddress, name: str) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
@@ -45,10 +44,14 @@ class Product(Node):
     Instance Attributes:
     - name:
         the name of the product to that is displayed when showing reccomendations
+    - brand:
+        the name of the brand of the product that is displayed when filtering
+
     """
-    name = str
-    brand = str
-    price = float
+    name: str
+    brand: str
+    price: float
+    suitability: dict[str, float]
 
     def __init__(self, address: NodeAddress, name: str, brand: str, price: float) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
@@ -56,6 +59,10 @@ class Product(Node):
         self.name = name
         self.brand = brand
         self.price = price
+        self.suitability['oily'] = 0.0
+        self.suitability['dry'] = 0.0
+        self.suitability['combination'] = 0.0
+        self.suitability['average'] = 0.0
 
 
 class Review:
@@ -69,8 +76,8 @@ class Review:
         given for that product and skin type.
 
     """
-    endpoints = set[Node]
-    ratings = dict[str, float]
+    endpoints: set[Node]
+    ratings: dict[str, float]
 
     def __init__(self, n1: Node, n2: Node, rating: tuple[str, float]) -> None:
         self.endpoints = {n1, n2}
