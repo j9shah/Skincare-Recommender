@@ -16,7 +16,8 @@ with open('data/sample_products.csv', encoding="utf8") as products:
             print(p_id)
 
             for row in reader_product:
-                # if p_id in row[10]:
-                    print(row[10])
+                url = str(row[10])
+                if p_id in url:
+                    print(url)
 
             # if found id -- file, reader = csv.reader(file)
