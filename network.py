@@ -1,4 +1,5 @@
 """The main network of the program is created here as well its various nodes and edges."""
+from __future__ import annotations
 
 NodeAddress = int | str
 
