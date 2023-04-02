@@ -43,46 +43,48 @@ def get_category_input() -> str:
     return clicked.get()
 
 
-# def get_skin_type_input() -> str:
-#     """
-#     Gets the type of skin type the user has
-#     This function has similar structure to get_product_input()
-#     """
-#     skin_type_window = tk.Tk()
-#     skin_type_window.title("Skincare Reccomender")
-#     skin_type_window.geometry("500x500")
-#
-#     label = tk.Label(text="What's your skin type?")
-#     label.pack()
-#
-#     skin_type_options = [
-#         "Serum",
-#         "Moisturizer",
-#         "Sunscreen",
-#         "Toner",
-#         "Masks",
-#         "Eyecreams",
-#         "Cleansers"
-#     ]
-#     # option that is chosen by the user
-#     clicked = tk.StringVar(product_window)
-#     # initial text
-#     clicked.set("Serum")
-#     # creating the dropdown menu
-#     drop = tk.OptionMenu(product_window, clicked, *product_options)
-#     drop.pack()
-#     # submit button, closes the window when clicked
-#     submit_button = tk.Button(product_window, text='Next', command=product_window.destroy)
-#     submit_button.pack()
-#     product_window.mainloop()
-#
-#     # gets the submitted option
-#     return clicked.get()
+def get_skin_type_input() -> str:
+    """
+    Gets the type of skin type the user has
+    This function has similar structure to get_product_input()
+    """
+    skin_type_window = tk.Tk()
+    skin_type_window.title("Skincare Reccomender")
+    skin_type_window.geometry("500x500")
+    label = tk.Label(text="What's your skin type?")
+    label.pack()
+    skin_type_options = ["Dry", "Oily", "Combination"]
+    clicked = tk.StringVar(skin_type_window)
+    clicked.set("Dry")
+    drop = tk.OptionMenu(skin_type_window, clicked, *skin_type_options)
+    drop.pack()
+    submit_button = tk.Button(skin_type_window, text='Next', command=skin_type_window.destroy)
+    submit_button.pack()
+    skin_type_window.mainloop()
+    return clicked.get()
 
 
-
+def get_budget_input() -> str:
+    """
+    Gets the user's budget
+    """
+    budget_window = tk.Tk()
+    budget_window.title("Skincare Reccomender")
+    budget_window.geometry("500x500")
+    label = tk.Label(text="What's your budget? Enter an amount without a $ sign.")
+    label.pack()
+    entry = tk.Entry()
+    entry.pack()
+    price = entry.get()
+    submit_button = tk.Button(budget_window, text='Next', command=budget_window.destroy)
+    submit_button.pack()
+    budget_window.mainloop()
+    return price
 
 
 if __name__ == '__main__':
     # Loading in csv files
-    product = get_category_input()
+    # Getting input from user
+    # product = get_category_input()
+    # skin_type = get_skin_type_input()
+    budget = get_budget_input()
