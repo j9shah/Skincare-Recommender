@@ -1,7 +1,7 @@
 """The main network of the program is created here as well its various nodes and edges."""
+from __future__ import annotations
 
 NodeAddress = int | str
-
 
 class Node:
     """A node that represents a user or product in a network.
@@ -51,14 +51,16 @@ class Product(Node):
     name: str
     brand: str
     price: float
+    category: str
     suitability: dict[str, float]
 
-    def __init__(self, address: NodeAddress, name: str, brand: str, price: float) -> None:
+    def __init__(self, address: NodeAddress, name: str, brand: str, category: str, price: float) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
         super().__init__(address)
         self.name = name
         self.brand = brand
         self.price = price
+        self.category = category
         self.suitability['oily'] = 0.0
         self.suitability['dry'] = 0.0
         self.suitability['combination'] = 0.0
