@@ -1,31 +1,31 @@
 """recommendation program that recommends the user of a product depending on the skin type they have"""
 import network
 
+
 class AbstractRecommender(network.Network):
-    """Abstract Recommender object that will recommend items depending on the preference of the user."""
-    def __init__(self):
+    """
+    Abstract Recommender object that will recommend items depending on the preference of the user.
+    """
+    def __init__(self, product_dict, skin_type_dict, brand_dict, price_range_dict):
         super().__init__()
-        self.brand_list = brand_list #need to fix this
-        self.skin_type_list = skin_type_list #need to fix this
-        self.price_range_list = price_range_list #need to fix this
+        self.product_dict = product_dict
+        self.skin_type_dict = skin_type_dict
+        self.brand_dict = brand_dict
+        self.price_range_dict = price_range_dict
 
-    def find_paths(self):
-        """Returns a list of paths from one Product to Another"""
-        recommended_products = self.recommend_products(self.brand_list, self.skin_type_list, self.price_range_list)
+    def recommend_products(self):
+        """Return a set of products that match the given product type, skin type, brand, and price range, sorted by
+        ratings
+        """
+        product_set = set(tuple(p) for p in self.product_dict.values()) & set(
+            tuple(s) for s in self.skin_type_dict.values()) & set(tuple(b) for b in self.brand_dict.values()) & set(
+            tuple(p) for p in self.price_range_dict.values())
 
-        # Return these products
-        return recommended_products
+        unique_products = []
+        for product in product_set:
+            if product not in unique_products:
+                unique_products.append(product)
 
-    def recommend_products(self, brand_list, skin_type_list, price_range_list):
-        """Returns a list of products that match the given brand, skin type, and price range, sorted by ratings"""
-        brand_products = set(brand_list)
-        skin_type_products = set(skin_type_list)
-        price_range_products = set(price_range_list)
-
-        # Get the set of products that appear in all 3 lists
-        recommended_products = brand_products.intersection(skin_type_products, price_range_products)
-
-        # Sort the recommended products by their ratings
-        sorted_products = sorted(recommended_products, key=lambda x: float(x.split(",")[5]), reverse=True)
+        sorted_products = sorted(unique_products, key=lambda x: x[5], reverse=True)
 
         return sorted_products
