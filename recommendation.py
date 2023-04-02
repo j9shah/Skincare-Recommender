@@ -11,7 +11,7 @@ class AbstractRecommender(network.Network):
 
     def find_paths(self):
         """Returns a list of paths from one Product to Another"""
-        recommended_products = self.recommend_products(brand_list, skin_type_list, price_range_list)
+        recommended_products = self.recommend_products(self.brand_list, self.skin_type_list, self.price_range_list)
 
         # Return these products
         return recommended_products
