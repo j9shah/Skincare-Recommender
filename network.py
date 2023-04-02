@@ -81,7 +81,7 @@ class Review:
 
     def __init__(self, n1: Node, n2: Node, rating: tuple[str, float]) -> None:
         self.endpoints = {n1, n2}
-        ratings = self.ratings
+        ratings = self.ratings  #?
         ratings[rating[0]] = rating[1]
 
 
