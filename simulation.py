@@ -15,10 +15,10 @@ def get_category_input() -> str:
     """
     # initializing GUI
     category_window = tk.Tk()
-    category_window.title("Skincare Reccomender")
+    category_window.title("Sephora Recommender")
     category_window.geometry("500x500")  # changes the size
 
-    label = tk.Label(text="What kind of products would you like reccomended?")
+    label = tk.Label(text="What kind of products would you like recommended?")
     label.pack()
 
     category_options = initialize.pass_category_list()
@@ -43,7 +43,7 @@ def get_skin_type_input() -> str:
     This function has similar structure to get_product_input()
     """
     skin_type_window = tk.Tk()
-    skin_type_window.title("Skincare Reccomender")
+    skin_type_window.title("Sephora Recommender")
     skin_type_window.geometry("500x500")
     label = tk.Label(text="What's your skin type?")
     label.pack()
@@ -62,7 +62,7 @@ def get_budget_input() -> int:
     """Gets the user's budget
     """
     budget_window = tk.Tk()
-    budget_window.title("Skincare Reccomender")
+    budget_window.title("Sephora Recommender")
     budget_window.geometry("500x500")
     label = tk.Label(text="What's your budget? Choose an amount in $.")
     label.pack()
@@ -94,7 +94,7 @@ def get_brand_input() -> Optional[str]:
     If the user chooses to search for any brand, returns None
     """
     brand_window = tk.Tk()
-    brand_window.title("Skincare Reccomender")
+    brand_window.title("Sephora Recommender")
     brand_window.geometry("500x500")
     label = tk.Label(text="Finally, is there a brand you're looking for?")
     label.pack()
@@ -118,7 +118,7 @@ def get_output(recommended_products: list[network.Product]) -> None:
     Displays the recommended products for the user
     """
     output_window = tk.Tk()
-    output_window.title("Skincare Reccomender")
+    output_window.title("Sephora Recommender")
     output_window.geometry("500x500")
     label = tk.Label(text="We've found some products that you might like:")
     label.pack()
