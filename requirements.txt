@@ -4,6 +4,8 @@
 hypothesis
 pytest
 python-ta~=2.4.2
+Tcl
+Tk
 
 # GUI
 plotly>=5.8,<5.9

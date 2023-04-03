@@ -47,7 +47,7 @@ def get_skin_type_input() -> str:
     skin_type_window.geometry("500x500")
     label = tk.Label(text="What's your skin type?")
     label.pack()
-    skin_type_options = ["Dry", "Oily", "Combination"]
+    skin_type_options = ["dry", "oily", "combination"]
     clicked = tk.StringVar(skin_type_window)
     clicked.set("Dry")
     drop = tk.OptionMenu(skin_type_window, clicked, *skin_type_options)
