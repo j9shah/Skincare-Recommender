@@ -3,6 +3,7 @@ from typing import Optional
 
 import network
 
+
 class RecommenderGraph(network.Network):
     """
         Abstract Recommender object that will recommend items depending on the preference of the user.
