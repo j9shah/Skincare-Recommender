@@ -1,18 +1,20 @@
 """recommendation program that recommends the user of a product depending on the skin type they have"""
+from typing import Optional
+
 import network
 
 class RecommenderGraph(network.Network):
     """
         Abstract Recommender object that will recommend items depending on the preference of the user.
     """
-    def __init__(self, reviews: list[network.Review]) -> None:
-        for review in reviews:
-            product = review.get_product()
-            user = review.get_user()
-            self.add_review(user, product, review.rating)
-            # self._nodes[product].update_suitability()
+    # def __init__(self, reviews: list[network.Review]) -> None:
+    #     for review in reviews:
+    #         product = review.get_product()
+    #         user = review.get_user()
+    #         self.add_review(user, product, review.rating)
+    #         # self._nodes[product].update_suitability()
 
-    def filter(self, budget: int, product: str, skin_type: str) -> list[network.Product]:
+    def filter(self, budget: int, product: str, skin_type: str, brand: Optional[str]) -> list[network.Product]:
         """Returns a list of filtered products
 
         The list will first sort by how suitable the product is for a skin type, and then by price.
@@ -25,7 +27,9 @@ class RecommenderGraph(network.Network):
         products = self.get_product_nodes()
         for node in products:
             if self._products[node].price <= budget and self._products[node].category == product:
-                new_products.append(self._products[node])
+                if brand is not None and brand == self._products[node].brand:
+                    new_products.append(self._products[node])
+                else:
         new_products.sort(key=lambda x: x.suitability[skin_type])
         new_products.sort(key=lambda x: x.price)
 
