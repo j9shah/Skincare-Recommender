@@ -45,7 +45,6 @@ def read_csv() -> Network:
                 for product in reader_product:
                     url = product[10]
                     if p_id in url:
-                        print(url)  # placeholder
                         # this product (its review file) is found in product info csv (by search for p_id in url)
                         # the current row contains the file product
                         # now read each review (one per row)
