@@ -1,15 +1,15 @@
 """
 CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
 This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
-The following functions use tkinter to create a GUI that the user can interact with
+
+The following functions use tkinter to create a GUI simulation that the user can interact with and use.
 """
 import tkinter as tk  # add to requirements.txt later
 from typing import Optional
 
 
 def get_category_input() -> str:
-    """
-    Gets the type of product that should be recommended from the user, using a dropdown menu
+    """Gets the type of product that should be recommended from the user, using a dropdown menu
     """
     # initializing GUI
     category_window = tk.Tk()
@@ -45,8 +45,7 @@ def get_category_input() -> str:
 
 
 def get_skin_type_input() -> str:
-    """
-    Gets the type of skin type the user has
+    """Gets the type of skin type the user has
     This function has similar structure to get_product_input()
     """
     skin_type_window = tk.Tk()
@@ -66,8 +65,7 @@ def get_skin_type_input() -> str:
 
 
 def get_budget_input() -> int:
-    """
-    Gets the user's budget
+    """Gets the user's budget
     """
     budget_window = tk.Tk()
     budget_window.title("Skincare Reccomender")
@@ -98,8 +96,7 @@ def get_budget_input() -> int:
 
 
 def get_brand_input() -> Optional[str]:
-    """
-    Gets a specific brand that the user wants to search for
+    """Gets a specific brand that the user wants to search for
     If the user chooses to search for any brand, returns None
     """
     brand_window = tk.Tk()
