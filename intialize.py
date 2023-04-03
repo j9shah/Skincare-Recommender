@@ -6,6 +6,8 @@ import csv
 from network import Network, Product, User
 from recommendation import RecommenderGraph
 
+brands = []
+categories = []
 
 def read_csv() -> RecommenderGraph:
     """ This function extracts intiail data from the dataset in csv file and adds them to the network"""
@@ -89,14 +91,14 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
     return user_address
 
 
-def pass_brands_list(brands: list) -> list[str]:
+def pass_brands_list() -> list[str]:
     """
     This function is a helper for simulation.py. It passes the list of brands of the products in the network.
     """
     return brands
 
 
-def pass_category_list(categories: list) -> list[str]:
+def pass_category_list() -> list[str]:
     """
     This function is a helper for simulation.py. It passes the list of categories of the products in the network.
     """

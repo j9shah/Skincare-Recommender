@@ -3,6 +3,7 @@ The following functions use tkinter to create a GUI that the user can interact w
 """
 import tkinter as tk  # add to requirements.txt later
 from typing import Optional
+import intialize
 
 
 def get_category_input() -> str:
@@ -17,15 +18,17 @@ def get_category_input() -> str:
     label = tk.Label(text="What kind of products would you like reccomended?")
     label.pack()
 
-    category_options = [  # sample ones for now
-        "Serum",
-        "Moisturizer",
-        "Sunscreen",
-        "Toner",
-        "Masks",
-        "Eyecreams",
-        "Cleansers"
-    ]
+    category_options = list(set(intialize.pass_category_list()))
+    brand_options = list(set(intialize.pass_brands_list()))
+    # category_options = [  # sample ones for now
+    #     "Serum",
+    #     "Moisturizer",
+    #     "Sunscreen",
+    #     "Toner",
+    #     "Masks",
+    #     "Eyecreams",
+    #     "Cleansers"
+    # ]
     # option that is chosen by the user
     clicked = tk.StringVar(category_window)
     # initial text
