@@ -6,6 +6,8 @@ The following functions use tkinter to create a GUI simulation that the user can
 """
 import tkinter as tk  # add to requirements.txt later
 from typing import Optional
+import intialize
+import network
 
 
 def get_category_input() -> str:
@@ -19,15 +21,17 @@ def get_category_input() -> str:
     label = tk.Label(text="What kind of products would you like reccomended?")
     label.pack()
 
-    category_options = [  # sample ones for now
-        "Serum",
-        "Moisturizer",
-        "Sunscreen",
-        "Toner",
-        "Masks",
-        "Eyecreams",
-        "Cleansers"
-    ]
+    category_options = list(set(intialize.pass_category_list()))
+    brand_options = list(set(intialize.pass_brands_list()))
+    # category_options = [  # sample ones for now
+    #     "Serum",
+    #     "Moisturizer",
+    #     "Sunscreen",
+    #     "Toner",
+    #     "Masks",
+    #     "Eyecreams",
+    #     "Cleansers"
+    # ]
     # option that is chosen by the user
     clicked = tk.StringVar(category_window)
     # initial text
@@ -123,21 +127,15 @@ def get_brand_input() -> Optional[str]:
     else:
         return clicked.get()
 
-def get_output() -> None:
+
+def get_output(recommended_products: list[network.Product]) -> None:
     """
-    Displays the output for the user
+    Displays the recommended products for the user
     """
     output_window = tk.Tk()
     output_window.title("Skincare Reccomender")
     output_window.geometry("500x500")
-    label = tk.Label(text="We've found some products that might be g")
+    label = tk.Label(text="We've found some products that you might like:")
     label.pack()
-    skin_type_options = ["Dry", "Oily", "Combination"]
-    clicked = tk.StringVar(skin_type_window)
-    clicked.set("Dry")
-    drop = tk.OptionMenu(skin_type_window, clicked, *skin_type_options)
-    drop.pack()
-    submit_button = tk.Button(skin_type_window, text='Next', command=skin_type_window.destroy)
-    submit_button.pack()
-    skin_type_window.mainloop()
-    return clicked.get()
+    for product in recommended_products:
+        tk.Label(text=product.brand + product.name + ", " + str(product.price)).pack()
