@@ -1,5 +1,5 @@
 """
-CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
+CSC111 Course Project: Sephora Beauty Matchmaker
 This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
 
 The main network of the program is created here as well its various nodes and edges.
