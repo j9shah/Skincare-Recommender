@@ -1,7 +1,7 @@
 """
 CSC111 Course Project: Sephora Beauty Matchmaker
 This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
-The intial dataset of the program is extracted here and placed into the program graph
+The initial dataset of the program is extracted here and placed into the program graph
 """
 
 import os
