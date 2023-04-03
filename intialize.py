@@ -99,26 +99,14 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
     return user_address
 
 
-<<<<<<< HEAD
 def pass_brands_list(brands: list) -> list[str]:
     """This function is a helper for simulation.py. It passes the list of brands of the products in the network.
-=======
-def pass_brands_list() -> list[str]:
-    """
-    This function is a helper for simulation.py. It passes the list of brands of the products in the network.
->>>>>>> a63a806151ea0b93cac14cc041ffc418083113f4
     """
     return brands
 
 
-<<<<<<< HEAD
 def pass_category_list(categories: list) -> list[str]:
     """This function is a helper for simulation.py. It passes the list of categories of the products in the network.
-=======
-def pass_category_list() -> list[str]:
-    """
-    This function is a helper for simulation.py. It passes the list of categories of the products in the network.
->>>>>>> a63a806151ea0b93cac14cc041ffc418083113f4
     """
     return categories
 
