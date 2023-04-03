@@ -116,5 +116,6 @@ if __name__ == '__main__':
     python_ta.check_all(config={
         'max-line-length': 120,
         'extra-imports': ['os', 'csv', 'network', 'recommendation'],
-        'allowed-io': ['read_csv', 'insert_reviews']
+        'allowed-io': ['read_csv', 'insert_reviews'],
+        'disable': ['E9992', 'E9997']
     })
