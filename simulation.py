@@ -21,7 +21,7 @@ def get_category_input() -> str:
     label = tk.Label(text="What kind of products would you like recommended?")
     label.pack()
 
-    category_options = initialize.pass_category_list()
+    category_options = list(set(initialize.pass_category_list()))
     # option that is chosen by the user
     clicked = tk.StringVar(category_window)
     # initial text
@@ -98,7 +98,7 @@ def get_brand_input() -> Optional[str]:
     brand_window.geometry("500x500")
     label = tk.Label(text="Finally, is there a brand you're looking for?")
     label.pack()
-    brand_options = initialize.pass_brands_list()
+    brand_options = list(set(initialize.pass_brands_list()))
     brand_options.insert(0, "All brands")
     clicked = tk.StringVar(brand_window)
     clicked.set("All brands")
