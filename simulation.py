@@ -49,7 +49,7 @@ def get_skin_type_input() -> str:
     label.pack()
     skin_type_options = ["dry", "oily", "combination"]
     clicked = tk.StringVar(skin_type_window)
-    clicked.set("Dry")
+    clicked.set("dry")
     drop = tk.OptionMenu(skin_type_window, clicked, *skin_type_options)
     drop.pack()
     submit_button = tk.Button(skin_type_window, text='Next', command=skin_type_window.destroy)
