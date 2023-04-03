@@ -123,7 +123,7 @@ def get_output(recommended_products: list[network.Product]) -> None:
     label = tk.Label(text="We've found some products that you might like:")
     label.pack()
     for product in recommended_products:
-        tk.Label(text=product.brand + product.name + ", " + str(product.price)).pack()
+        tk.Label(text=product.brand + ", " + product.name + ", $" + str(product.price)).pack()
     submit_button = tk.Button(output_window, text='Done', command=output_window.destroy)
     submit_button.pack()
     output_window.mainloop()
