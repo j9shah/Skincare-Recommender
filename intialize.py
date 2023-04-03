@@ -45,7 +45,7 @@ with open('data/sample_products.csv', encoding="utf8") as products:
                     for review in reader_review:
                         address = i
                         name = review[0]
-                        curr_product = graph._nodes[address]    # need access graph nodes
+                        curr_product = graph._nodes[address]   # need access graph nodes
                         curr_user = User(address, name)     # need to add to the whole graph
                         skin_type = review[3]
                         rating = float(review[1])

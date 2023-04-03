@@ -31,6 +31,7 @@ class User(Node):
         the name of the user to that is displayed when showing reccomendations
     """
     name: str
+    skin_type: str
 
     def __init__(self, address: NodeAddress, name: str) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
@@ -118,5 +119,3 @@ class Network:
     def get_nodes(self) -> dict[NodeAddress, Node]:
         """Returns the current nodes in the network"""
         return self._nodes
-
-    #hi
