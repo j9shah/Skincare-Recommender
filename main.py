@@ -3,6 +3,12 @@ CSC111 Course Project: Skincare Reccomender
 Vivian Feng, Cailyn Kim, Jainam Shah, Jennifer Tan
 """
 import tkinter as tk  # add to requirements.txt later
+from intialize import read_csv
+
+
+def runnner() -> None:
+    """ Calls for dataset initialization """
+    network = read_csv()
 
 
 # the following functions use tkinter to get input from the user
