@@ -27,7 +27,7 @@ def get_category_input() -> str:
     # initial text
     clicked.set(category_options[0])
     # creating the dropdown menu
-    drop = tk.OptionMenu(category_window, variable=clicked, *category_options)
+    drop = tk.OptionMenu(category_window, clicked, *category_options)
     drop.pack()
     # submit button, closes the window when clicked
     submit_button = tk.Button(category_window, text='Next', command=category_window.destroy)
@@ -50,7 +50,7 @@ def get_skin_type_input() -> str:
     skin_type_options = ["dry", "oily", "combination"]
     clicked = tk.StringVar(skin_type_window)
     clicked.set(skin_type_options[0])
-    drop = tk.OptionMenu(skin_type_window, variable=clicked, *skin_type_options)
+    drop = tk.OptionMenu(skin_type_window, clicked, *skin_type_options)
     drop.pack()
     submit_button = tk.Button(skin_type_window, text='Next', command=skin_type_window.destroy)
     submit_button.pack()
@@ -74,7 +74,7 @@ def get_budget_input() -> int:
     ]
     clicked = tk.StringVar(budget_window)
     clicked.set(budget_options[0])
-    drop = tk.OptionMenu(budget_window, variable=clicked, *budget_options)
+    drop = tk.OptionMenu(budget_window, clicked, *budget_options)
     drop.pack()
     submit_button = tk.Button(budget_window, text='Next', command=budget_window.destroy)
     submit_button.pack()
@@ -102,7 +102,7 @@ def get_brand_input() -> Optional[str]:
     brand_options.insert(0, "All brands")
     clicked = tk.StringVar(brand_window)
     clicked.set("All brands")
-    drop = tk.OptionMenu(brand_window, variable=clicked, *brand_options)
+    drop = tk.OptionMenu(brand_window, clicked, *brand_options)
     drop.pack()
     submit_button = tk.Button(brand_window, text='Search for skincare!', command=brand_window.destroy)
     submit_button.pack()
