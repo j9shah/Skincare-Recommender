@@ -70,6 +70,7 @@ class Product(Node):
         self.suitability[review.rating[0]] = new_average
 
 
+
 class Review:
     """A user node that represents individual users in a network
 
@@ -145,3 +146,7 @@ class Network:
     def get_user_nodes(self) -> dict[NodeAddress, User]:
         """Returns the current user nodes in the network"""
         return self._users
+
+    def get_brands(self) -> list[str]:
+        """Returns the list of brands a network contains"""
+        return [self._products[product].brand for product in self._products]
