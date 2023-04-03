@@ -138,10 +138,6 @@ class Network:
         review = self._products[product.address].reviews[user.address]
         self._products[product.address].update_suitability(review)
 
-    def get_nodes(self) -> dict[NodeAddress, Node]:
-        """Returns the current nodes in the network"""
-        return self._users
-
     def get_product_nodes(self) -> dict[NodeAddress, Product]:
         """Returns the current product nodes in the network"""
         return self._products
