@@ -30,3 +30,10 @@ def runner() -> None:
 
 if __name__ == '__main__':
     runner()
+
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'extra-imports': ['initialize', 'simulation'],
+    })
