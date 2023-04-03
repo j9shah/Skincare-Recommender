@@ -90,15 +90,18 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
 
 
 def pass_brands_list(brands: list) -> list[str]:
-    """pass the """
+    """
+    This function is a helper for simulation.py. It passes the list of brands of the products in the network.
+    """
     return brands
 
 
 def pass_category_list(categories: list) -> list[str]:
+    """
+    This function is a helper for simulation.py. It passes the list of categories of the products in the network.
+    """
     return categories
 
-# brands = {product.brand for product in product_nodes}
-# also need update sample
 
 if __name__ == '__main__':
     import python_ta
