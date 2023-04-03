@@ -30,6 +30,8 @@ class User(Node):
     Instance Attributes:
     - name:
         the name of the user to that is displayed when showing reccomendations
+    - skin_type:
+        the skin type of the user that is displayed when showing recommendations
     """
     name: str
     skin_type: str
@@ -48,6 +50,13 @@ class Product(Node):
         the name of the product to that is displayed when showing reccomendations
     - brand:
         the name of the brand of the product that is displayed when filtering
+    - price:
+        the cost of the product which is used for filtering
+    - category:
+        the category of the product which is used for filtering
+    - suitability:
+        a mapping of how suitable a product is for different skintypes where the skin type is the key and
+        the ratings are the corresponding values
 
     """
     name: str
@@ -71,7 +80,6 @@ class Product(Node):
         self.suitability[review.rating[0]] = new_average
 
 
-
 class Review:
     """A user node that represents individual users in a network
 
@@ -88,18 +96,6 @@ class Review:
     def __init__(self, n1: Node, n2: Node, rating: tuple[str, float]) -> None:
         self.endpoints = {n1, n2}
         self.rating = rating
-
-    def get_product(self):
-        """returns the product node of the endpoint"""
-        for point in self.endpoints:
-            if isinstance(point.address, int):
-                return point
-
-    def get_user(self):
-        """returns the user node of the endpoint"""
-        for point in self.endpoints:
-            if not isinstance(point.address, int):
-                return point
 
 
 class Network:
