@@ -131,7 +131,7 @@ class Network:
         """Makes a review between two nodes"""
         if user.address not in self._users:
             self.add_node(user)
-        if product.address not in self._users:
+        if product.address not in self._products:
             self.add_node(product)
 
         Review(self._users[user.address], self._users[product.address], rating)
