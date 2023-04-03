@@ -8,8 +8,11 @@ The intial dataset of the program is extracted here and placed into the program 
 import os
 import csv
 
-from network import Network, Product, User
+from network import Product, User
 from recommendation import RecommenderGraph
+
+brands = []
+categories = []
 
 
 def read_csv() -> RecommenderGraph:
@@ -48,8 +51,8 @@ def read_csv() -> RecommenderGraph:
 
         match_reviews(all_url, product_nodes, user_address, network)
 
-        brands = network.get_brands()
-        category = network.get_category()
+        brands.extend(network.get_brands())
+        categories.extend(network.get_category())
 
     return network
 
@@ -96,14 +99,26 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
     return user_address
 
 
+<<<<<<< HEAD
 def pass_brands_list(brands: list) -> list[str]:
     """This function is a helper for simulation.py. It passes the list of brands of the products in the network.
+=======
+def pass_brands_list() -> list[str]:
+    """
+    This function is a helper for simulation.py. It passes the list of brands of the products in the network.
+>>>>>>> a63a806151ea0b93cac14cc041ffc418083113f4
     """
     return brands
 
 
+<<<<<<< HEAD
 def pass_category_list(categories: list) -> list[str]:
     """This function is a helper for simulation.py. It passes the list of categories of the products in the network.
+=======
+def pass_category_list() -> list[str]:
+    """
+    This function is a helper for simulation.py. It passes the list of categories of the products in the network.
+>>>>>>> a63a806151ea0b93cac14cc041ffc418083113f4
     """
     return categories
 
@@ -113,6 +128,7 @@ if __name__ == '__main__':
 
     python_ta.check_all(config={
         'max-line-length': 120,
-        'extra-imports': ['os', 'csv', 'network'],
-        'allowed-io': ['read_csv', 'insert_reviews']
+        'extra-imports': ['os', 'csv', 'network', 'recommendation'],
+        'allowed-io': ['read_csv', 'insert_reviews'],
+        'disable': ['E9992', 'E9997']
     })
