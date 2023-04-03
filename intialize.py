@@ -62,7 +62,7 @@ def read_csv() -> Network:
                             skin_type = review[3]
                             rating = float(review[1])
                             # adds user to graph within add_review
-                            network.add_review(curr_user, curr_product, (skin_type, rating))
+                            network.add_review(user=curr_user, product=curr_product, rating=(skin_type, rating))
 
                             # update suitability attribute
                             curr_product.update_suitability()   # needing the Review we just made in parameter
