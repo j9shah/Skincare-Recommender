@@ -3,6 +3,7 @@ from __future__ import annotations
 
 NodeAddress = int | str
 
+
 class Node:
     """A node that represents a user or product in a network.
 
