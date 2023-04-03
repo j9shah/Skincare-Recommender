@@ -30,7 +30,7 @@ class RecommenderGraph(network.Network):
                     new_products.append(self._products[node])
                 else:
                     new_products.append(self._products[node])
-        new_products.sort(key=lambda x: x.suitability[skin_type])
+        new_products.sort(key=lambda x: x.suitability[skin_type], reverse=True)
         new_products.sort(key=lambda x: x.price)
 
         if not new_products:
