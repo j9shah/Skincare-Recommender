@@ -1,4 +1,6 @@
 """
+CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
+This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
 The following functions use tkinter to create a GUI that the user can interact with
 """
 def get_category_input() -> str:
