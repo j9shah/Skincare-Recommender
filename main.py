@@ -1,6 +1,6 @@
 """
-CSC111 Course Project: Skincare Recomemnder
-Vivian Feng, Cailyn Kim, Jainam Shah, Jennifer Tan
+CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
+This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
 """
 from intialize import read_csv
 import simulation

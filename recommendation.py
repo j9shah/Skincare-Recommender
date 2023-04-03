@@ -1,5 +1,8 @@
-"""recommendation program that recommends the user of a product depending on the skin type they have
-Jainam Shah, Jennifer Tan"""
+"""
+CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
+This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
+recommendation program that recommends the user of a product depending on the skin type they have
+"""
 from typing import Optional
 
 import network
