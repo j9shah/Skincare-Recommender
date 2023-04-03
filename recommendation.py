@@ -31,7 +31,7 @@ class AbstractRecommender(network.Network):
         brand = self.brand_dict.values()
         brand1 = list(brand)[0]
 
-        price_range = set(self.price_range_dict.keys())
+        price_range = self.price_range_dict.values()
         price_range1 = list(price_range)[0]
 
         # Get the intersection of the four lists
