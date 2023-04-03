@@ -1,7 +1,8 @@
 """
 CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
 This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
-The intial dataset of the program is extracted here and placed into the program graph
+
+The intial dataset of the program is extracted here and placed into the program graph for further use.
 """
 
 import os
@@ -12,8 +13,8 @@ from recommendation import RecommenderGraph
 
 
 def read_csv() -> RecommenderGraph:
-    """ This function extracts intiail data from the dataset in csv file and adds them to the network"""
-
+    """ This function extracts intiail data from the dataset in csv file and adds them to the network
+    """
     network = RecommenderGraph()
 
     with open('data/sample_products.csv', encoding="utf8") as products:
@@ -54,7 +55,8 @@ def read_csv() -> RecommenderGraph:
 
 
 def match_reviews(all_url: list, product_nodes: dict, user_address: int, network: RecommenderGraph) -> None:
-    """ Matches review file's corresponding product with exisitng product. """
+    """Matches review file's corresponding product with exisitng product.
+    """
     directory = 'data/reviews'
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
@@ -73,7 +75,8 @@ def match_reviews(all_url: list, product_nodes: dict, user_address: int, network
 
 
 def insert_reviews(file_path: str, curr_product: Product, user_address: int, network: RecommenderGraph) -> int:
-    """ Creates a review for every row of the review file (a single review) and add to network. """
+    """ Creates a review for every row of the review file (a single review) and add to network.
+    """
     with open(file_path, encoding="utf8") as file:
 
         reader_review = csv.reader(file)
@@ -94,15 +97,13 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
 
 
 def pass_brands_list(brands: list) -> list[str]:
-    """
-    This function is a helper for simulation.py. It passes the list of brands of the products in the network.
+    """This function is a helper for simulation.py. It passes the list of brands of the products in the network.
     """
     return brands
 
 
 def pass_category_list(categories: list) -> list[str]:
-    """
-    This function is a helper for simulation.py. It passes the list of categories of the products in the network.
+    """This function is a helper for simulation.py. It passes the list of categories of the products in the network.
     """
     return categories
 
