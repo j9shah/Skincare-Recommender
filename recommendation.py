@@ -28,7 +28,7 @@ class RecommenderGraph(network.Network):
             if self._products[node].price <= budget and self._products[node].category == product:
                 if brand is not None and brand == self._products[node].brand:
                     new_products.append(self._products[node])
-                else:
+                elif brand is None:
                     new_products.append(self._products[node])
         new_products.sort(key=lambda x: x.suitability[skin_type], reverse=True)
         new_products.sort(key=lambda x: x.price)
