@@ -49,7 +49,7 @@ def get_skin_type_input() -> str:
     label.pack()
     skin_type_options = ["dry", "oily", "combination"]
     clicked = tk.StringVar(skin_type_window)
-    clicked.set("dry")
+    clicked.set(skin_type_options[0])
     drop = tk.OptionMenu(skin_type_window, clicked, *skin_type_options)
     drop.pack()
     submit_button = tk.Button(skin_type_window, text='Next', command=skin_type_window.destroy)
@@ -73,7 +73,7 @@ def get_budget_input() -> int:
         "$200+"
     ]
     clicked = tk.StringVar(budget_window)
-    clicked.set("$50")
+    clicked.set(budget_options[0])
     drop = tk.OptionMenu(budget_window, clicked, *budget_options)
     drop.pack()
     submit_button = tk.Button(budget_window, text='Next', command=budget_window.destroy)
