@@ -108,3 +108,5 @@ if __name__ == '__main__':
     product = get_category_input()
     skin_type = get_skin_type_input()
     budget = get_budget_input()
+
+    graph = G

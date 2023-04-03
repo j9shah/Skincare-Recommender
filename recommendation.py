@@ -1,4 +1,6 @@
 """recommendation program that recommends the user of a product depending on the skin type they have"""
+from typing import Optional
+
 import network
 
 class RecommenderGraph(network.Network):
@@ -10,7 +12,19 @@ class RecommenderGraph(network.Network):
             product = review.get_product()
             user = review.get_user()
             self.add_review(user, product, review.rating)
-            self._nodes[product].
+            # self._nodes[product].update_suitability()
+
+    def filter_by_budget(self, budget: int, product: str, skin_type) -> Optional[list[network.Node]]:
+        """Returns a list of filtered products"""
+        new_products = []
+        products = self.get_product_nodes()
+        for node in products:
+            if self._products[node].price <= budget:
+                if self._product
+                new_products.append(self._products[node])
+        new_products.sort(key=lambda x: x.price)
+        return new_products
+
 
 
 class AbstractRecommender(network.Network):

@@ -96,13 +96,13 @@ class Review:
         """returns the product node of the endpoint"""
         for point in self.endpoints:
             if isinstance(point.address, int):
-                return point.address
+                return point
 
     def get_user(self):
         """returns the user node of the endpoint"""
         for point in self.endpoints:
             if not isinstance(point.address, int):
-                return point.address
+                return point
 
 
 class Network:
@@ -113,25 +113,38 @@ class Network:
         the nodes that are within the network
 
     """
-    _nodes: dict[NodeAddress, Node]
+    _users: dict[NodeAddress, User]
+    _products: dict[NodeAddress, Product]
 
     def __init__(self) -> None:
-        self._nodes = {}
+        self._users = {}
+        self._products = {}
 
-    def add_node(self, node: Node) -> Node:
+    def add_node(self, node: User | Product) -> Node:
         """Addes a node to the network and returns it"""
-        self._nodes[node.address] = node
+        if node.address % 2 == 0:
+            self._users[node.address] = node
+        else:
+            self._products[node.address] = node
         return node
 
     def add_review(self, user: User, product: Product, rating: tuple[str, float]) -> None:
         """Makes a review between two nodes"""
-        if user not in self._nodes:
+        if user.address not in self._users:
             self.add_node(user)
-        if product not in self._nodes:
+        if product.address not in self._users:
             self.add_node(product)
 
-        Review(self._nodes[user.address], self._nodes[product.address], rating)
+        Review(self._users[user.address], self._users[product.address], rating)
 
     def get_nodes(self) -> dict[NodeAddress, Node]:
         """Returns the current nodes in the network"""
-        return self._nodes
+        return self._users
+
+    def get_product_nodes(self) -> dict[NodeAddress, Product]:
+        """Returns the current product nodes in the network"""
+        return self._products
+
+    def get_user_nodes(self) -> dict[NodeAddress, User]:
+        """Returns the current user nodes in the network"""
+        return self._users
