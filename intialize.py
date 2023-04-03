@@ -33,7 +33,7 @@ def read_csv() -> Network:
 
             i += 1
 
-        nodes = network.get_nodes()
+        product_nodes = network.get_product_nodes
 
         for filename in os.listdir(directory):
             file_path = os.path.join(directory, filename)
@@ -57,13 +57,14 @@ def read_csv() -> Network:
                             address = i
                             name = review[0]
 
-                            curr_product = nodes[address]   # need access graph nodes
-                            curr_user = User(address, name)     # need to add to the whole graph
+                            curr_product = product_nodes[address]
+                            curr_user = User(address, name)
                             skin_type = review[3]
                             rating = float(review[1])
-                            new_review = Review(curr_product, curr_user, (skin_type, rating))
-                            network.add_node(address, new_review)
+                            # adds user to graph within add_review
+                            network.add_review(curr_user, curr_product, (skin_type, rating))
 
-                            # left to do: update suitability attribute
+                            # update suitability attribute
+                            curr_product.update_suitability()   # needing the Review we just made in parameter
 
     return network
