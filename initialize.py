@@ -32,6 +32,7 @@ def read_csv() -> RecommenderGraph:
             brand = row[1]
             price = float(row[8])
             category = row[2]
+            print(category)
 
             new_product = Product(address=product_address, name=name, brand=brand, price=price, category=category)
 
@@ -39,6 +40,8 @@ def read_csv() -> RecommenderGraph:
 
             product_address += 1
 
+        brands.extend(network.get_brands())
+        categories.extend(network.get_category())
         product_nodes = network.get_product_nodes()
 
         all_url = []
@@ -49,9 +52,6 @@ def read_csv() -> RecommenderGraph:
         user_address = 0
 
         match_reviews(all_url, product_nodes, user_address, network)
-
-        brands.extend(network.get_brands())
-        categories.extend(network.get_category())
 
     return network
 
