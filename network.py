@@ -121,10 +121,7 @@ class Network:
 
     def add_node(self, node: User | Product) -> Node:
         """Addes a node to the network and returns it"""
-        if node.address % 2 == 0:
-            self._users[node.address] = node
-        else:
-            self._products[node.address] = node
+        self._products[node.address] = node
         return node
 
     def add_review(self, user: User, product: Product, rating: tuple[str, float]) -> None:

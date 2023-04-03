@@ -32,7 +32,6 @@ def read_csv() -> RecommenderGraph:
             brand = row[1]
             price = float(row[8])
             category = row[2]
-            print(category)
 
             new_product = Product(address=product_address, name=name, brand=brand, price=price, category=category)
 
