@@ -7,11 +7,12 @@ The intial dataset of the program is extracted here and placed into the program 
 import os
 import csv
 
-from network import Network, Product, User
+from network import Product, User
 from recommendation import RecommenderGraph
 
 brands = []
 categories = []
+
 
 def read_csv() -> RecommenderGraph:
     """ This function extracts intiail data from the dataset in csv file and adds them to the network"""
@@ -50,7 +51,7 @@ def read_csv() -> RecommenderGraph:
         match_reviews(all_url, product_nodes, user_address, network)
 
         brands = network.get_brands()
-        category = network.get_category()
+        categories = network.get_category()
 
     return network
 
@@ -114,6 +115,6 @@ if __name__ == '__main__':
 
     python_ta.check_all(config={
         'max-line-length': 120,
-        'extra-imports': ['os', 'csv', 'network'],
+        'extra-imports': ['os', 'csv', 'network', 'recommendation'],
         'allowed-io': ['read_csv', 'insert_reviews']
     })
