@@ -29,7 +29,7 @@ def read_csv() -> Network:
 
             new_product = Product(address=address, name=name, brand=brand, price=price, category=category)
 
-            network.add_node(address, new_product)
+            network.add_node(new_product)
 
             i += 1
 

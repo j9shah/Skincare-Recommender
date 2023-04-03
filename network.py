@@ -55,12 +55,13 @@ class Product(Node):
     category: str
     suitability: dict[str, float]
 
-    def __init__(self, address: NodeAddress, name: str, brand: str, price: float) -> None:
+    def __init__(self, address: NodeAddress, name: str, brand: str, price: float, category: str) -> None:
         """Initialize this node with the given address and no current connections to other nodes."""
         super().__init__(address)
         self.name = name
         self.brand = brand
         self.price = price
+        self.category = category
         self.suitability = {'oily': 0.0, 'dry': 0.0, 'combination': 0.0, 'average': 0.0}
 
     def update_suitability(self, review: Review) -> None:
@@ -117,21 +118,19 @@ class Network:
     def __init__(self) -> None:
         self._nodes = {}
 
-    def add_node(self, address: NodeAddress) -> Node:
+    def add_node(self, node: Node) -> Node:
         """Addes a node to the network and returns it"""
+        self._nodes[node.address] = node
+        return node
 
-        new_node = Node(address)
-        self._nodes[address] = new_node
-        return new_node
-
-    def add_review(self, user: NodeAddress, product: NodeAddress, rating: tuple[str, float]) -> None:
+    def add_review(self, user: User, product: Product, rating: tuple[str, float]) -> None:
         """Makes a review between two nodes"""
         if user not in self._nodes:
             self.add_node(user)
         if product not in self._nodes:
             self.add_node(product)
 
-        Review(self._nodes[user], self._nodes[product], rating)
+        Review(self._nodes[user.address], self._nodes[product.address], rating)
 
     def get_nodes(self) -> dict[NodeAddress, Node]:
         """Returns the current nodes in the network"""
