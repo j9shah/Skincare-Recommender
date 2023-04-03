@@ -1,14 +1,8 @@
 """
-<<<<<<< Updated upstream
 CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
 This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
-<<<<<<< HEAD
 
 This is the main file of the function that initiates and runs the complete simulation.
-=======
-=======
-CSC111 Course Project: Skincare Recommender
-Vivian Feng, Cailyn Kim, Jainam Shah, Jennifer Tan
 """
 from initialize import read_csv
 import simulation
