@@ -9,9 +9,8 @@ This is the main file of the function that initiates and runs the complete simul
 =======
 CSC111 Course Project: Skincare Recommender
 Vivian Feng, Cailyn Kim, Jainam Shah, Jennifer Tan
->>>>>>> a63a806151ea0b93cac14cc041ffc418083113f4
 """
-from intialize import read_csv
+from initialize import read_csv
 import simulation
 
 
