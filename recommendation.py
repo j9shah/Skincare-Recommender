@@ -13,12 +13,6 @@ class RecommenderGraph(network.Network):
     """
         Abstract Recommender object that will recommend items depending on the preference of the user.
     """
-    # def __init__(self, reviews: list[network.Review]) -> None:
-    #     for review in reviews:
-    #         product = review.get_product()
-    #         user = review.get_user()
-    #         self.add_review(user, product, review.rating)
-    #         # self._nodes[product].update_suitability()
 
     def filter(self, budget: int, product: str, skin_type: str, brand: Optional[str]) -> list[network.Product]:
         """Returns a list of filtered products
