@@ -85,11 +85,6 @@ class Review:
 
     def __init__(self, n1: Node, n2: Node, rating: tuple[str, float]) -> None:
         self.endpoints = {n1, n2}
-        # self.ratings['oily'] = 0.0
-        # self.ratings['dry'] = 0.0
-        # self.ratings['combination'] = 0.0
-        # self.ratings['average'] = 0.0
-        # updates rating
         self.rating = rating
 
     def get_product(self):
