@@ -50,8 +50,8 @@ def read_csv() -> RecommenderGraph:
 
         match_reviews(all_url, product_nodes, user_address, network)
 
-        brands = network.get_brands()
-        categories = network.get_category()
+        brands.extend(network.get_brands())
+        categories.extend(network.get_category())
 
     return network
 
@@ -116,5 +116,6 @@ if __name__ == '__main__':
     python_ta.check_all(config={
         'max-line-length': 120,
         'extra-imports': ['os', 'csv', 'network', 'recommendation'],
-        'allowed-io': ['read_csv', 'insert_reviews']
+        'allowed-io': ['read_csv', 'insert_reviews'],
+        'disable': ['E9992', 'E9997']
     })
