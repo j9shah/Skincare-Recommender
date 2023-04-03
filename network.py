@@ -136,6 +136,8 @@ class Network:
             self.add_node(product)
 
         Review(self._users[user.address], self._users[product.address], rating)
+        review = self._products[product.address].reviews[user.address]
+        self._products[product.address].update_suitability(review)
 
     def get_nodes(self) -> dict[NodeAddress, Node]:
         """Returns the current nodes in the network"""
