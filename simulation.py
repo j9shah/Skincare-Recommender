@@ -1,6 +1,10 @@
 """
 The following functions use tkinter to create a GUI that the user can interact with
 """
+import tkinter as tk  # add to requirements.txt later
+from typing import Optional
+
+
 def get_category_input() -> str:
     """
     Gets the type of product that should be recommended from the user, using a dropdown menu
@@ -90,6 +94,35 @@ def get_budget_input() -> int:
     else:
         return 200
 
+
+def get_brand_input() -> Optional[str]:
+    """
+    Gets a specific brand that the user wants to search for
+    If the user chooses to search for any brand, returns None
+    """
+    brand_window = tk.Tk()
+    brand_window.title("Skincare Reccomender")
+    brand_window.geometry("500x500")
+    label = tk.Label(text="Finally, is there a brand you're looking for?")
+    label.pack()
+    brand_options = [  # temporary
+        "$50",
+        "$100",
+        "$150",
+        "$200+"
+    ]
+    brand_options.insert(0, "All brands")
+    clicked = tk.StringVar(brand_window)
+    clicked.set("All brands")
+    drop = tk.OptionMenu(brand_window, clicked, *brand_options)
+    drop.pack()
+    submit_button = tk.Button(brand_window, text='Search for skincare!', command=brand_window.destroy)
+    submit_button.pack()
+    brand_window.mainloop()
+    if clicked.get() == "All brands":
+        return None
+    else:
+        return clicked.get()
 
 def get_output() -> None:
     """
