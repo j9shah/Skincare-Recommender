@@ -24,7 +24,10 @@ def runner() -> None:
     brand = simulation.get_brand_input()
 
     # performing computations on the data
-    network.filter(budget, product, skin_type, brand)
+    recommended_products = network.filter(budget, product, skin_type, brand)
+
+    # returning output
+    simulation.get_output(recommended_products)
 
 
 if __name__ == '__main__':

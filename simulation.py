@@ -21,21 +21,11 @@ def get_category_input() -> str:
     label = tk.Label(text="What kind of products would you like reccomended?")
     label.pack()
 
-    category_options = list(set(intialize.pass_category_list()))
-    brand_options = list(set(intialize.pass_brands_list()))
-    # category_options = [  # sample ones for now
-    #     "Serum",
-    #     "Moisturizer",
-    #     "Sunscreen",
-    #     "Toner",
-    #     "Masks",
-    #     "Eyecreams",
-    #     "Cleansers"
-    # ]
+    category_options = intialize.pass_category_list()
     # option that is chosen by the user
     clicked = tk.StringVar(category_window)
     # initial text
-    clicked.set("Serum")
+    clicked.set(category_options[0])
     # creating the dropdown menu
     drop = tk.OptionMenu(category_window, clicked, *category_options)
     drop.pack()
@@ -111,12 +101,7 @@ def get_brand_input() -> Optional[str]:
     brand_window.geometry("500x500")
     label = tk.Label(text="Finally, is there a brand you're looking for?")
     label.pack()
-    brand_options = [  # temporary
-        "$50",
-        "$100",
-        "$150",
-        "$200+"
-    ]
+    brand_options = intialize.pass_brands_list()
     brand_options.insert(0, "All brands")
     clicked = tk.StringVar(brand_window)
     clicked.set("All brands")
