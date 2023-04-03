@@ -151,3 +151,7 @@ class Network:
     def get_brands(self) -> list[str]:
         """Returns the list of brands a network contains"""
         return [self._products[product].brand for product in self._products]
+
+    def get_category(self) -> list[str]:
+        """Returns the list of categories a network contains"""
+        return [self._products[product].category for product in self._products]
