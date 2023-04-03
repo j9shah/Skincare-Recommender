@@ -127,3 +127,12 @@ def get_output(recommended_products: list[network.Product]) -> None:
     submit_button = tk.Button(output_window, text='Done', command=output_window.destroy)
     submit_button.pack()
     output_window.mainloop()
+
+
+if __name__ == '__main__':
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'extra-imports': ['tkinter', 'initialize', 'network'],
+    })

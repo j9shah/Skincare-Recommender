@@ -81,7 +81,8 @@ class Product(Node):
 
     def update_suitability(self, review: Review) -> None:
         """updates the suitability of a product"""
-        new_average = (self.suitability[review.rating[0]]*len(self.reviews) + review.rating[1]) / (len(self.reviews)+1)
+        new_average = (self.suitability[review.rating[0]] * len(self.reviews) + review.rating[1]) / \
+                      (len(self.reviews) + 1)
         self.suitability[review.rating[0]] = new_average
 
 
@@ -156,3 +157,13 @@ class Network:
     def get_category(self) -> list[str]:
         """Returns the list of categories a network contains"""
         return [self._products[product].category for product in self._products]
+
+
+if __name__ == '__main__':
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'extra-imports': ['tkinter', 'initialize', 'network'],
+        'disable': ['E9992', 'E9997', 'R0913']
+    })

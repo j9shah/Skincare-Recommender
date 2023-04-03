@@ -39,3 +39,12 @@ class RecommenderGraph(network.Network):
             new_products.sort(key=lambda x: len(x.reviews))
 
         return new_products
+
+
+if __name__ == '__main__':
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'extra-imports': ['network'],
+    })
