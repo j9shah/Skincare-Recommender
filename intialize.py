@@ -3,7 +3,9 @@
 import os
 import csv
 
-from network import Product, User, Review
+from network import Product, User, Review, Network
+
+new_products = []
 
 directory = 'data/reviews'
 with open('data/sample_products.csv', encoding="utf8") as products:
@@ -14,14 +16,14 @@ with open('data/sample_products.csv', encoding="utf8") as products:
 
     i = 0
     for row in reader_product:
-
+        print(row)
         address = i
         name = row[3]
         brand = row[1]
         price = float(row[8])
 
         new_product = Product(address, name, brand, price)    # need to add to the whole graph
-
+        #
         i += 1
 
     for filename in os.listdir(directory):
@@ -43,6 +45,7 @@ with open('data/sample_products.csv', encoding="utf8") as products:
                     row1 = next(reader_product)
                     i = 0
                     for review in reader_review:
+                        print(review)
                         address = i
                         name = review[0]
                         curr_product = graph._nodes[address]   # need access graph nodes

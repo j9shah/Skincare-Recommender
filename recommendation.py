@@ -1,6 +1,17 @@
 """recommendation program that recommends the user of a product depending on the skin type they have"""
 import network
 
+class RecommenderGraph(network.Network):
+    """
+        Abstract Recommender object that will recommend items depending on the preference of the user.
+    """
+    def __init__(self, reviews: list[network.Review]) -> None:
+        for review in reviews:
+            product = review.get_product()
+            user = review.get_user()
+            self.add_review(user, product, review.rating)
+            self._nodes[product].
+
 
 class AbstractRecommender(network.Network):
     """
