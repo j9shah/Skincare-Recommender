@@ -6,6 +6,7 @@ The following functions use tkinter to create a GUI that the user can interact w
 import tkinter as tk  # add to requirements.txt later
 from typing import Optional
 import intialize
+import network
 
 
 def get_category_input() -> str:
@@ -130,7 +131,7 @@ def get_brand_input() -> Optional[str]:
         return clicked.get()
 
 
-def get_output(recommended_products: list) -> None:
+def get_output(recommended_products: list[network.Product]) -> None:
     """
     Displays the recommended products for the user
     """
@@ -139,3 +140,5 @@ def get_output(recommended_products: list) -> None:
     output_window.geometry("500x500")
     label = tk.Label(text="We've found some products that you might like:")
     label.pack()
+    for product in recommended_products:
+        tk.Label(text=product.brand + product.name + ", " + str(product.price)).pack()

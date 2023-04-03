@@ -5,7 +5,6 @@ This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennif
 =======
 CSC111 Course Project: Skincare Recommender
 Vivian Feng, Cailyn Kim, Jainam Shah, Jennifer Tan
->>>>>>> Stashed changes
 """
 from intialize import read_csv
 import simulation
