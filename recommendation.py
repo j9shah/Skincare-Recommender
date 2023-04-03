@@ -4,6 +4,7 @@ from typing import Optional
 
 import network
 
+
 class RecommenderGraph(network.Network):
     """
         Abstract Recommender object that will recommend items depending on the preference of the user.
@@ -31,6 +32,7 @@ class RecommenderGraph(network.Network):
                 if brand is not None and brand == self._products[node].brand:
                     new_products.append(self._products[node])
                 else:
+                    new_products.append(self._products[node])
         new_products.sort(key=lambda x: x.suitability[skin_type])
         new_products.sort(key=lambda x: x.price)
 
