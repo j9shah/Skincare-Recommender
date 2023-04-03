@@ -43,6 +43,9 @@ def read_csv() -> RecommenderGraph:
 
         match_reviews(all_url, product_nodes, user_address, network)
 
+        brands = network.get_brands()
+        category = network.get_category()
+
     return network
 
 
@@ -85,6 +88,14 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
 
     return user_address
 
+
+def pass_brands_list(brands: list) -> list[str]:
+    """pass the """
+    return brands
+
+
+def pass_category_list(categories: list) -> list[str]:
+    return categories
 
 # brands = {product.brand for product in product_nodes}
 # also need update sample
