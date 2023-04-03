@@ -50,8 +50,8 @@ def read_csv() -> RecommenderGraph:
 
         match_reviews(all_url, product_nodes, user_address, network)
 
-        brands = network.get_brands()
-        categories = network.get_category()
+        brands.extend(network.get_brands())
+        categories.extend(network.get_category())
 
     return network
 
