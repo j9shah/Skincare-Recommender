@@ -3,52 +3,67 @@
 import os
 import csv
 
-from network import Product, User, Review
+from network import Network, Product, User, Review
 
-directory = 'data/reviews'
-with open('data/sample_products.csv', encoding="utf8") as products:
-    reader_product = csv.reader(products)
-    row1 = next(reader_product)
 
-    # create Product object
+def read_csv() -> Network:
+    """ This function extracts intiail data from the dataset in csv file and adds them to the network"""
 
-    i = 0
-    for row in reader_product:
+    network = Network()
 
-        address = i
-        name = row[3]
-        brand = row[1]
-        price = float(row[8])
+    directory = 'data/reviews'
+    with open('data/sample_products.csv', encoding="utf8") as products:
+        reader_product = csv.reader(products)
+        row1 = next(reader_product)
 
-        new_product = Product(address, name, brand, price)    # need to add to the whole graph
+        # create Product object
 
-        i += 1
+        i = 0
+        for row in reader_product:
 
-    for filename in os.listdir(directory):
-        file_path = os.path.join(directory, filename)
-        with open(file_path, encoding="utf8") as file:
+            address = i
+            name = row[3]
+            brand = row[1]
+            price = float(row[8])
+            category = row[2]
 
-            p_id = str(filename)
-            p_id = p_id.replace(".csv", "?")
+            new_product = Product(address=address, name=name, brand=brand, price=price, category=category)
 
-            for product in reader_product:
-                url = product[10]
-                if p_id in url:
-                    print(url)  # placeholder
-                    # this product (its review file) is found in product info csv (by search for p_id in url)
-                    # the current row contains the file product
-                    # now read each review (one per row)
+            network.add_node(address, new_product)
 
-                    reader_review = csv.reader(filename)
-                    row1 = next(reader_product)
-                    i = 0
-                    for review in reader_review:
-                        address = i
-                        name = review[0]
-                        curr_product = graph._nodes[address]   # need access graph nodes
-                        curr_user = User(address, name)     # need to add to the whole graph
-                        skin_type = review[3]
-                        rating = float(review[1])
-                        Review(curr_product, curr_user, (skin_type, rating))
+            i += 1
 
-                        # left to do: update suitability attribute
+        nodes = network.get_nodes()
+
+        for filename in os.listdir(directory):
+            file_path = os.path.join(directory, filename)
+            with open(file_path, encoding="utf8") as file:
+
+                p_id = str(filename)
+                p_id = p_id.replace(".csv", "?")
+
+                for product in reader_product:
+                    url = product[10]
+                    if p_id in url:
+                        print(url)  # placeholder
+                        # this product (its review file) is found in product info csv (by search for p_id in url)
+                        # the current row contains the file product
+                        # now read each review (one per row)
+
+                        reader_review = csv.reader(filename)
+                        row1 = next(reader_product)
+                        i = 0
+                        for review in reader_review:
+                            address = i
+                            name = review[0]
+
+                            curr_product = nodes[address]   # need access graph nodes
+                            curr_user = User(address, name)     # need to add to the whole graph
+                            skin_type = review[3]
+                            rating = float(review[1])
+                            new_review = Review(curr_product, curr_user, (skin_type, rating))
+                            network.add_node(address, new_review)
+
+                            # left to do: update suitability attribute
+
+    return network
