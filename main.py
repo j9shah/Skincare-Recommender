@@ -1,5 +1,5 @@
 """
-CSC111 Course Project: Skincare Reccomender
+CSC111 Course Project: Skincare Recomemnder
 Vivian Feng, Cailyn Kim, Jainam Shah, Jennifer Tan
 """
 import tkinter as tk  # add to requirements.txt later
@@ -70,27 +70,41 @@ def get_skin_type_input() -> str:
     return clicked.get()
 
 
-def get_budget_input() -> str:
+def get_budget_input() -> int:
     """
     Gets the user's budget
     """
     budget_window = tk.Tk()
     budget_window.title("Skincare Reccomender")
     budget_window.geometry("500x500")
-    label = tk.Label(text="What's your budget? Enter an amount without a $ sign.")
+    label = tk.Label(text="What's your budget? Choose an amounr in $.")
     label.pack()
-    entry = tk.Entry()
-    entry.pack()
-    price = entry.get()
+    budget_options = [
+        "$50",
+        "$100",
+        "$150",
+        "$200+"
+    ]
+    clicked = tk.StringVar(budget_window)
+    clicked.set("$50")
+    drop = tk.OptionMenu(budget_window, clicked, *budget_options)
+    drop.pack()
     submit_button = tk.Button(budget_window, text='Next', command=budget_window.destroy)
     submit_button.pack()
     budget_window.mainloop()
-    return price
+    if clicked.get() == "$50":
+        return 50
+    elif clicked.get() == "$100":
+        return 100
+    elif clicked.get() == "$150":
+        return 150
+    else:
+        return 200
 
 
 if __name__ == '__main__':
     # Loading in csv files
     # Getting input from user
-    # product = get_category_input()
-    # skin_type = get_skin_type_input()
+    product = get_category_input()
+    skin_type = get_skin_type_input()
     budget = get_budget_input()
