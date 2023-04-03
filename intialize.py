@@ -45,7 +45,6 @@ def read_csv() -> Network:
                 for product in reader_product:
                     url = product[10]
                     if p_id in url:
-                        print(url)  # placeholder
                         # this product (its review file) is found in product info csv (by search for p_id in url)
                         # the current row contains the file product
                         # now read each review (one per row)
@@ -62,7 +61,7 @@ def read_csv() -> Network:
                             skin_type = review[3]
                             rating = float(review[1])
                             # adds user to graph within add_review
-                            network.add_review(curr_user, curr_product, (skin_type, rating))
+                            network.add_review(user=curr_user, product=curr_product, rating=(skin_type, rating))
 
                             # update suitability attribute
                             curr_product.update_suitability()   # needing the Review we just made in parameter
