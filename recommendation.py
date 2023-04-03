@@ -1,4 +1,5 @@
-"""recommendation program that recommends the user of a product depending on the skin type they have"""
+"""recommendation program that recommends the user of a product depending on the skin type they have
+Jainam Shah, Jennifer Tan"""
 from typing import Optional
 
 import network
