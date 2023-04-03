@@ -1,7 +1,8 @@
 """
 CSC111 Course Project: SkinGenius: Your Personalized Skincare Matchmaker
 This file is Copyright (c) 2023 Vivian Feng, Cailyn Kim, Jainam Shah, and Jennifer Tan.
-recommendation program that recommends the user of a product depending on the skin type they have
+
+This holds the recommendation program that recommends the user of product(s) depending on the skin type they have.
 """
 from typing import Optional
 
@@ -26,7 +27,6 @@ class RecommenderGraph(network.Network):
 
         If there are no products for the specific category, the program will return a list of products from most popular
         to least popular.
-
         """
         new_products = []
         products = self.get_product_nodes()
