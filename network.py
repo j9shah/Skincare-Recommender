@@ -7,6 +7,7 @@ from __future__ import annotations
 
 NodeAddress = int | str
 
+
 class Node:
     """A node that represents a user or product in a network.
 
@@ -33,6 +34,8 @@ class User(Node):
     Instance Attributes:
     - name:
         the name of the user to that is displayed when showing reccomendations
+    - skin_type:
+        the skin type of the user that is displayed when showing recommendations
     """
     name: str
     skin_type: str
@@ -51,6 +54,13 @@ class Product(Node):
         the name of the product to that is displayed when showing reccomendations
     - brand:
         the name of the brand of the product that is displayed when filtering
+    - price:
+        the cost of the product which is used for filtering
+    - category:
+        the category of the product which is used for filtering
+    - suitability:
+        a mapping of how suitable a product is for different skintypes where the skin type is the key and
+        the ratings are the corresponding values
 
     """
     name: str
@@ -89,24 +99,7 @@ class Review:
 
     def __init__(self, n1: Node, n2: Node, rating: tuple[str, float]) -> None:
         self.endpoints = {n1, n2}
-        # self.ratings['oily'] = 0.0
-        # self.ratings['dry'] = 0.0
-        # self.ratings['combination'] = 0.0
-        # self.ratings['average'] = 0.0
-        # updates rating
         self.rating = rating
-
-    def get_product(self):
-        """returns the product node of the endpoint"""
-        for point in self.endpoints:
-            if isinstance(point.address, int):
-                return point
-
-    def get_user(self):
-        """returns the user node of the endpoint"""
-        for point in self.endpoints:
-            if not isinstance(point.address, int):
-                return point
 
 
 class Network:
@@ -154,3 +147,11 @@ class Network:
     def get_user_nodes(self) -> dict[NodeAddress, User]:
         """Returns the current user nodes in the network"""
         return self._users
+
+    def get_brands(self) -> list[str]:
+        """Returns the list of brands a network contains"""
+        return [self._products[product].brand for product in self._products]
+
+    def get_category(self) -> list[str]:
+        """Returns the list of categories a network contains"""
+        return [self._products[product].category for product in self._products]
