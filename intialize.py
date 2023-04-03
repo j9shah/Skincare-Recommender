@@ -4,12 +4,13 @@ import os
 import csv
 
 from network import Network, Product, User
+from recommendation import RecommenderGraph
 
 
-def read_csv() -> Network:
+def read_csv() -> RecommenderGraph:
     """ This function extracts intiail data from the dataset in csv file and adds them to the network"""
 
-    network = Network()
+    network = RecommenderGraph()
 
     with open('data/sample_products.csv', encoding="utf8") as products:
         reader_product = csv.reader(products)
@@ -45,7 +46,7 @@ def read_csv() -> Network:
     return network
 
 
-def match_reviews(all_url: list, product_nodes: dict, user_address: int, network: Network) -> None:
+def match_reviews(all_url: list, product_nodes: dict, user_address: int, network: RecommenderGraph) -> None:
     """ Matches review file's corresponding product with exisitng product. """
     directory = 'data/reviews'
     for filename in os.listdir(directory):
@@ -64,7 +65,7 @@ def match_reviews(all_url: list, product_nodes: dict, user_address: int, network
                 user_address += insert_reviews(file_path, curr_product, user_address, network)
 
 
-def insert_reviews(file_path: str, curr_product: Product, user_address: int, network: Network) -> int:
+def insert_reviews(file_path: str, curr_product: Product, user_address: int, network: RecommenderGraph) -> int:
     """ Creates a review for every row of the review file (a single review) and add to network. """
     with open(file_path, encoding="utf8") as file:
 
@@ -87,7 +88,6 @@ def insert_reviews(file_path: str, curr_product: Product, user_address: int, net
 
 # brands = {product.brand for product in product_nodes}
 # also need update sample
-# change Network to Abstract Recommender
 
 if __name__ == '__main__':
     import python_ta
